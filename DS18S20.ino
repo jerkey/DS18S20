@@ -61,7 +61,7 @@ float getTemp(){
 
   delay(850); // wait for the conversion or else you get old data
 
-  byte present = ds.reset();
+  ds.reset();
   ds.select(DS18S20addr);
   ds.write(0xBE); // Read Scratchpad
 
