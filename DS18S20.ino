@@ -60,7 +60,7 @@ float getTemp(){
   ds.write(0x44,1); // start conversion, with parasite power on at the end
 
   for (int i = 0; i < 1000; i++) {// wait for the conversion or else you get old data
-    if (ds.read() > 0) i = 1000;
+    if (ds.read_bit() > 0) i = 1000;
     else delay(1);
   }
   // delay(850); // wait for the conversion or else you get old data
