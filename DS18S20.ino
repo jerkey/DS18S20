@@ -59,7 +59,11 @@ float getTemp(){
   ds.select(DS18S20addr);
   ds.write(0x44,1); // start conversion, with parasite power on at the end
 
-  delay(850); // wait for the conversion or else you get old data
+  for (int i = 0; i < 1000; i++) {// wait for the conversion or else you get old data
+    if (ds.read() > 0) i = 1000;
+    else delay(1);
+  }
+  // delay(850); // wait for the conversion or else you get old data
 
   ds.reset();
   ds.select(DS18S20addr);
